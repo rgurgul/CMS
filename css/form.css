@@ -1,0 +1,89 @@
+html, body{
+    margin: 0;
+    padding: 0;
+
+}
+
+*{
+    font-family: Scada;
+}
+
+#content{
+    padding: 15px;
+}
+
+#nav, #work-details
+{
+
+/*    width: 49%;
+    float: left;*/
+    min-height: 333px;
+
+}
+
+#nav{
+    padding-right: 2%;
+    font-size: 13px;
+}
+
+#form{
+
+}
+
+label{
+    width: 150px;
+    display: block;
+    float: left;
+    text-align: right;
+    padding-right: 7px;
+    font-weight: bold;
+}
+label:after{
+    content: ':';
+}
+
+#nav > fieldset > div{
+
+    width: 85px;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+#nav > fieldset > div:not(:last-child){
+
+    border-right: 1px solid #eaeaea;
+}
+
+#nav > fieldset > div > a{
+    border-bottom: 1px solid #eaeaea;
+    display: block;
+    padding-bottom: 4px;
+    margin-bottom: 4px;
+}
+
+input[type='text']{
+    /*width: 280px;*/
+}
+
+input, textarea, label{
+    margin-top: 5px !important;
+}
+
+input[type="button"], input[type="reset"], input[type="submit"] {
+    float: right;
+    margin-left: 8px;
+}
+
+.title
+{
+    background: black;
+    padding: 1px 15px;
+    color: white;
+
+}
+
+.clear{
+  clear: both;
+}

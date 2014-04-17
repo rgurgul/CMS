@@ -1,0 +1,19 @@
+<form id="form" data-validate='no'>
+  <fieldset>
+    <legend id="what-is">Nowy rekord</legend>
+    <label for="title">Tytuł</label>
+    <input type="text" id="title" class="input-xxlarge" autofocus required value="<%= title %>">
+    <br>
+    <div><label for="description">Opis</label></div>
+    <textarea id="description" rows="10" cols="50" class="input-xxlarge" required><%= description %></textarea>
+    <br>
+    <div class="clear"></div>
+  </fieldset>
+  <hr>
+  <!--<button id="send" type='button'>Wyślij</button>-->
+  <button type='button' class="btn btn-danger" id="btn-delete" onclick='return false;' value="USUŃ"><i
+    class="icon-trash icon-white"></i>USUŃ
+  </button>
+  <button type='submit' class="btn btn-success" id="btn-save" value="ZAPISZ"><i class="icon-ok icon-white"></i> ZAPISZ
+  </button>
+</form>

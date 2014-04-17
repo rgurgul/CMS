@@ -1,0 +1,70 @@
+<form id="form" data-validate='no'>
+  <fieldset>
+    <legend id="what-is">Nowy rekord</legend>
+    <label for="type">Sekcja</label>
+    <select id="type" disabled required>
+      <option value=""></option>
+      <option value="2">architektura</option>
+      <option value="3">wnętrza</option>
+      <option value="6">pracownia</option>
+      <option value="4">design</option>
+    </select>
+    <br>
+    <label for="title">Tytuł</label>
+    <input type="text" id="title" class="input-xxlarge" autofocus required value="<%= title %>">
+    <br>
+    <div><label for="description">Opis</label></div>
+    <textarea id="description" rows="10" cols="50" class="input-xxlarge" required><%= description %></textarea>
+    <br>
+    <div class="clear"></div>
+    <label for="date">Data</label>
+    <input type="date" id="date" required value="<%= date %>">
+    <br>
+    <label for="localization">Lokalizacja</label>
+    <input type="text" id="localization" class="input-xxlarge" required value="<%= localization %>">
+    <br>
+    <label for="icon-img">Ikona dla sekcji</label>
+    <!--<input type="file" id="icon-img" value="<%= icon %>">-->
+    <input type="text" class="input-xxlarge" id="icon-img" required pattern="[a-zA-Z0-9._%/+-]+.[jpg]{3}"
+      value="<%= icon %>" placeholder="... tylko pliki jpg"> <i class="icon-plus" id="add-icon"></i>
+    <br>
+    <label for="bg-img">Tło dla sekcji</label>
+    <input type="text" id="bg-img" class="input-xxlarge" required pattern="[a-zA-Z0-9._%/+-]+.[jpg]{3}"
+      value="<%= bg %>" placeholder="... tylko pliki jpg"> <i class="icon-plus" id="add-bg"></i>
+    <br>
+    <label for="gallery">Galeria</label>
+    <input type="text" id="gallery" class="input-xxlarge" value="<%= gallery %>" placeholder="... tylko pliki jpg"> <i
+    class="icon-plus" id="add-gallery"></i>
+    <br>
+    <label for="alpha">klapsdra(alpha)</label>
+    <input type="text" id="alpha" class="input-mini" required value="<%= alpha %>" placeholder="... wartości od 0 - 1">
+    <br>
+    <label for="nav-color">Kolor nawigacji</label>
+    <input type="color" id="nav-color" class="input-mini" value="<%= color %>">
+    <br>
+    <label for="color-klapsdra">kolor klapsdry</label>
+    <input type="color" id="color-klapsdra" class="input-mini" required value="<%= colorklapsdra %>">
+  </fieldset>
+  <hr>
+  <!--<button id="send" type='button'>Wyślij</button>-->
+  <button type='button' class="btn btn-danger" id="btn-delete" onclick='return false;' value="USUŃ"><i
+    class="icon-trash icon-white"></i>USUŃ
+  </button>
+  <button type='submit' class="btn btn-success" id="btn-save" value="ZAPISZ"><i class="icon-ok icon-white"></i> ZAPISZ
+  </button>
+  <!--<button id="btn-save">Save</button>-->
+  <!--<button id="btn-save">Delete</button>-->
+</form>
+<script>
+  function validateMyForm(t) {
+    /*event.preventDefault();
+     $(t).data('validate', 'ok')*/
+    //        alert($(t).data('validate'))
+  }
+  /*    $('#form').submit(function(event){
+   // cancels the form submission
+   event.preventDefault();
+   alert('perw')
+   // do whatever you want here
+   });*/
+</script>
