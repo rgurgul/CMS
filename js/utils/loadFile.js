@@ -1,13 +1,10 @@
-define([],
-    function() {
+define([], function() {
         var win, target, type, multi;
         var loadFile = {
-            loadFotoWin: function(t, sort, dir) {
+            loadFotoWin: function(t, type, dir) {
                 target = t;
-                type = sort;
                 multi = '';
-                win = window.open(location.hostname + "/adm/file.php?type=" + type + "&dir=" + dir, "Message Api",
-                    "width=300, height=300")
+                win = window.open("/adm/file.php?type=" + type + "&dir=" + dir, "Message Api", "width=300, height=300")
                 win.postMessage("", location.hostname);
             },
             displayMessage: function(evt) {
@@ -16,7 +13,7 @@ define([],
                     win.close();
                 } else {
                     multi += (evt.data + ",")
-                    target.val(multi)
+                    target.val(multi);
                 }
             }
         }

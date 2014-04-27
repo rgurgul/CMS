@@ -1,16 +1,11 @@
-var Confirmer = function(){
-
+var Confirmer = function() {
     this.question = function(q) {
         var r = confirm(q)
-        if (r==true)
-        {
+        if (r == true) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     };
 }
-
 var conf = new Confirmer();

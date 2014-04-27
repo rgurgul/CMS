@@ -1,6 +1,4 @@
-define(['backbone'],
-    function (Backbone) {
-
+define(['backbone'], function(Backbone) {
         var SectionSettingsModel = Backbone.Model.extend({
             defaults: {
                 bg: '',
@@ -10,8 +8,5 @@ define(['backbone'],
                 alpha: ''
             }
         })
-
-
         return SectionSettingsModel;
-
     })

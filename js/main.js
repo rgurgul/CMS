@@ -14,7 +14,6 @@ require(['jquery',
          'views/news-view',
          'views/news-details'],
     function($, Backbone, tpl, Work, WorkCollection, SectionSettingsModel, SettingsCollection, NewsCollection, NewsModel, MenuView, DetailView, SettingsSectionView, Login, MenuNews, DetailViewNews) {
-
         Backbone.View.prototype.close = function() {
             console.log('Closing view ' + this);
             if (this.beforeClose) {
@@ -23,9 +22,7 @@ require(['jquery',
             this.remove();
             this.unbind();
         };
-
         var AppRouter = Backbone.Router.extend({
-
             routes: {
                 "init": "init",
                 "newWork": "newWork",
@@ -34,27 +31,47 @@ require(['jquery',
                 "news/:id": "newsDetails",
                 "settings/:id": "settingsSection"
             },
+            getCookie: function(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i].trim();
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            },
             initialize: function() {
-                _.bindAll(this, "init");
-                $('#body').html(new Login().render())
-                //this.login(true)
+                var self = this;
                 $.ajaxSetup({
                     statusCode: {
                         401: function() {
-                            alert('brak autoryzacji - error 401')
+                            alert('brak autoryzacji - error 401');
+                            self.goToLoginPage();
                         },
                         403: function() {
-                            alert('Access denied - error 403')
+                            alert('Access denied - error 403');
+                            self.goToLoginPage();
                         }
                     }
                 });
-            },
-            init: function() {
-                if (this.user) {
+
+                if (this.getCookie('PHPSESSID')) {
                     this.loadBody();
                 } else {
-                    document.location.href = '/adm/';
+                    this.goToLoginPage();
                 }
+            },
+            init: function() {
+                if (this.getCookie('PHPSESSID')) {
+                    this.loadBody();
+                } else {
+                    this.goToLoginPage();
+                }
+            },
+            goToLoginPage: function() {
+                $('#body').html(new Login().render());
             },
             settingsSection: function(id) {
                 this.beforeSettings(function() {
@@ -92,10 +109,8 @@ require(['jquery',
                 if (this.currentView) {
                     this.currentView.close();
                 }
-
                 $(selector).html(view.render());
                 this.currentView = view;
-
                 return view;
             },
             loadMenu: function() {
@@ -204,17 +219,11 @@ require(['jquery',
                     event.preventDefault();
                     document.location.href = '/adm/#newNews';
                 });
-
-                if (!this.user) {
-                    //      return;
-                }
-
                 this.beforeNews();
                 this.beforeWorks();
                 this.beforeSettings();
             }
         })
-
         tpl.loadTemplates(['login-tpl',
                            'body',
                            'work-list-item',

@@ -3,9 +3,9 @@ define(['jquery',
         'utils/tpl',
         'utils/loadFile',
         'utils/Confirmer',
-        'views/TestExtend'],
-    function($, Backbone, tpl, loadFile, confirmer, TestExtend) {
-        var DetailView = TestExtend.extend({
+        'views/base-view'],
+    function($, Backbone, tpl, loadFile, confirmer, BaseView) {
+        var DetailView = BaseView.extend({
             tagName: 'div',
             events: {
                 "submit #form": 'onSubmit',
@@ -20,7 +20,7 @@ define(['jquery',
                 this.saveWork();
             },
             initialize: function(options) {
-                TestExtend.prototype.initialize.call(this, options);
+                BaseView.prototype.initialize.call(this, options);
                 this.template = _.template(tpl.get('work-details'))
             },
             loadIcon: function() {
@@ -46,29 +46,6 @@ define(['jquery',
                 } else {
                     $("#what-is", this.el).html("Edycja rekordu: " + this.model.get('title'))
                     $('#type option[value=' + this.model.get('type') + ']', this.el).attr('selected', 'selected');
-                    //$('#type', this.el).prop("selectedIndex", this.model.get('type'));
-                    //$("#description", this.el).wpwBSrotator()
-                    setTimeout(function() {
-                        $("#description", this.el).wpwBSrotator({
-                            width: 470,
-                            height: 250,
-                            rows: 3,
-                            cols: 4,
-                            ease: "easeInOutCirc",
-                            blockSpeed: 400,
-                            blockDelay: 80,
-                            blockOrderNext: "random",
-                            blockOrderPrev: "random",
-                            menuVisible: true,
-                            menuWidth: 140,
-                            menuType: "text",
-                            menuPosition: "left",
-                            menuAlign: "left",
-                            slideshowSpeed: 3500,
-                            slideshowEnabled: false,
-                            brickDistance: 1
-                        });
-                    }, 100)
                     $("#description", this.el).redactor({plugins: this.redactorPlugins});
                 }
                 return div;

@@ -1,9 +1,5 @@
-define(
-    ['jquery', 'underscore', 'backbone'],
-    function(){
-
+define(['jquery', 'underscore', 'backbone'], function() {
         var Work = Backbone.Model.extend({
-
             defaults: {
                 id: null,
                 type: "",
@@ -19,7 +15,5 @@ define(
                 colorklapsdra: ''
             }
         })
-
         return Work;
-
     })

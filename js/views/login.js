@@ -1,22 +1,20 @@
-define(['jquery', 'backbone', 'utils/tpl'],
-    function($, Backbone, tpl){
+define(['jquery', 'backbone', 'utils/tpl'], function($, Backbone, tpl) {
         var Login = Backbone.View.extend({
-            initialize: function(){
+            initialize: function() {
                 this.tamplate = _.template(tpl.get('login-tpl'));
             },
-            render: function(){
+            render: function() {
                 return $(this.el).html(this.tamplate())
             },
             events: {
-                "click .btn-success" : "checkUser"
+                "click .btn-success": "checkUser"
             },
-            checkUser: function(event){
+            checkUser: function(event) {
                 event.preventDefault();
-                var test = $.post("/works/login/", {name: $("#name").val(), pass: $("#pass").val()}, this.login );
+                $.post("/works/login/", {name: $("#name").val(), pass: $("#pass").val()}, this.login);
             },
-            login: function(data){
-                if(JSON.parse(data).name == 'admin'){
-                    app.user = true;
+            login: function(data) {
+                if (JSON.parse(data).name == 'admin') {
                     app.navigate('init', true);
                 }
             }
