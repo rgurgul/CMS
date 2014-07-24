@@ -15,7 +15,7 @@ define(['jquery', 'backbone', 'utils/tpl'], function($, Backbone, tpl) {
             },
             login: function(data) {
                 if (JSON.parse(data).name == 'admin') {
-                    app.navigate('init', true);
+	                app.loadBody();
                 }
             }
         });
