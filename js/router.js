@@ -45,7 +45,6 @@ define(['jquery',
 					context: this,
 					success: function(data) {
 						var data = JSON.parse(data);
-
 						if (data.status == true) {
 							console.log('is admin', data.status);
 							success.apply(this);
@@ -64,10 +63,6 @@ define(['jquery',
 					app.navigate('login', true);
 				});
 
-				//this.deleteCookie('PHPSESSID');
-
-				//this.goToLoginPage();
-
 				var self = this;
 				$.ajaxSetup({
 					statusCode: {
@@ -81,30 +76,9 @@ define(['jquery',
 						}
 					}
 				});
-
-
-
-				/*        if (this.getCookie('PHPSESSID')) {
-				 this.loadBody();
-				 } else {
-				 this.goToLoginPage();
-				 }*/
 			},
 			init: function() {
 
-				//this.checkUser();
-
-				/*this.checkUser(function() {
-					this.loadBody()
-				}, function() {
-					app.navigate('login', true);
-				});*/
-
-				/*if (this.getCookie('PHPSESSID')) {
-				 this.loadBody();
-				 } else {
-				 this.goToLoginPage();
-				 }*/
 			},
 			goToLoginPage: function() {
 				console.log('this.goToLoginPage()')
